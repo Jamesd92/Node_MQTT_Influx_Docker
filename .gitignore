@@ -1,5 +1,7 @@
 # Exclude log files
 *.log
 
-#Exclude 
+#Exclude node modules 
 /node_modules/
+#Exclude Influx files
+/Influx/
