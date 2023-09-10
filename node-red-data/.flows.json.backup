@@ -1,0 +1,314 @@
+[
+    {
+        "id": "39ff899616a66d92",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d3a8e4d06fbb9f35",
+        "type": "tab",
+        "label": "InfluxDB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b4fa79d1f22caa29",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "192.168.1.114:1883",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "049c7efb91c2f766",
+        "type": "influxdb",
+        "hostname": "influxdb",
+        "port": "8086",
+        "protocol": "http",
+        "database": "mqtt_data",
+        "name": "MQTT_Data",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://192.168.1.114:8086",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "d69d796e2b5f506b",
+        "type": "mqtt in",
+        "z": "39ff899616a66d92",
+        "name": "YesTest",
+        "topic": "Test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b4fa79d1f22caa29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "74549eeb35c9803b"
+            ]
+        ]
+    },
+    {
+        "id": "facc0add5647ccb2",
+        "type": "mqtt out",
+        "z": "39ff899616a66d92",
+        "name": "ThisIsATest",
+        "topic": "Test",
+        "qos": "",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b4fa79d1f22caa29",
+        "x": 290,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "74549eeb35c9803b",
+        "type": "debug",
+        "z": "39ff899616a66d92",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c0c3f396d4dd2f13",
+        "type": "inject",
+        "z": "39ff899616a66d92",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Test",
+        "payloadType": "str",
+        "x": 90,
+        "y": 240,
+        "wires": [
+            [
+                "facc0add5647ccb2"
+            ]
+        ]
+    },
+    {
+        "id": "25208d37b8b94957",
+        "type": "inject",
+        "z": "39ff899616a66d92",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "facc0add5647ccb2"
+            ]
+        ]
+    },
+    {
+        "id": "cd992cee86bf373a",
+        "type": "debug",
+        "z": "39ff899616a66d92",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ef1950904d96d584",
+        "type": "mqtt in",
+        "z": "39ff899616a66d92",
+        "name": "Temperature",
+        "topic": "ESP32/Temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b4fa79d1f22caa29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "cd992cee86bf373a"
+            ]
+        ]
+    },
+    {
+        "id": "e883fadab47d10d6",
+        "type": "debug",
+        "z": "39ff899616a66d92",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "fff978f17d486497",
+        "type": "mqtt in",
+        "z": "39ff899616a66d92",
+        "name": "Humidity",
+        "topic": "ESP32/Humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b4fa79d1f22caa29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "e883fadab47d10d6"
+            ]
+        ]
+    },
+    {
+        "id": "a9c60794553eb46d",
+        "type": "debug",
+        "z": "39ff899616a66d92",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "8caf00d31a5bb467",
+        "type": "mqtt in",
+        "z": "39ff899616a66d92",
+        "name": "Relative",
+        "topic": "ESP32/Relative",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b4fa79d1f22caa29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "a9c60794553eb46d"
+            ]
+        ]
+    },
+    {
+        "id": "32ded2271f966142",
+        "type": "influxdb out",
+        "z": "d3a8e4d06fbb9f35",
+        "influxdb": "049c7efb91c2f766",
+        "name": "MQTT_Data",
+        "measurement": "Temperature",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "ESP32",
+        "bucket": "ESP32_Data",
+        "x": 310,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "80c1ebbbb123d4f3",
+        "type": "mqtt in",
+        "z": "d3a8e4d06fbb9f35",
+        "name": "Temperature",
+        "topic": "ESP32/Temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b4fa79d1f22caa29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "32ded2271f966142"
+            ]
+        ]
+    }
+]
